@@ -1,0 +1,34 @@
+;; Object MultiSrver/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "MultiSrver/"
+  :tables (list 
+   (semanticdb-table "main.cpp"
+    :major-mode 'c++-mode
+    :tags '(("unistd.h" include (:system-flag t) (dependency-file "/usr/include/unistd.h") [16 35]) ("fcntl.h" include (:system-flag t) (dependency-file "/usr/include/fcntl.h") [36 54]) ("libsock.h" include nil nil [68 88]) ("CTable.h" include nil nil [89 108]) ("iostream" include (:system-flag t) (dependency-file none) [123 142]) ("algorithm" include (:system-flag t) (dependency-file none) [143 163]) ("set" include (:system-flag t) (dependency-file none) [164 178]) ("buf" variable (:dereference 1 :type "char") nil [201 216]) ("bytes_read" variable (:type "int") nil [217 232]) ("clients" variable (:type ("set" type (:type "class") nil nil)) nil [233 250]) ("get_id_mes" function (:arguments (("id" variable (:pointer 1 :type "char") (reparse-symbol arg-sub-list) [268 277]) ("mes" variable (:pointer 1 :type "char") (reparse-symbol arg-sub-list) [278 288]) ("idmes" variable (:pointer 1 :type "char") (reparse-symbol arg-sub-list) [289 301])) :type "void") nil [252 487]) ("action" function (:arguments (("sockfd" variable (:type "int") (reparse-symbol arg-sub-list) [501 512])) :type "void") nil [489 866]) ("main" function (:type "int") nil [868 2256]))
+    :file "main.cpp"
+    :pointmax 2257
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "libsock.h"
+    :major-mode 'c-mode
+    :tags '(("NOT_ACTIV_CONN_COUNT" variable (:constant-flag t) nil [113 151]) ("FOREVER" variable (:constant-flag t) nil [144 164]) ("create_addr" function (:arguments (("addr" variable (:type ("sockaddr_in" type (:prototype t :type "struct") nil nil)) (reparse-symbol arg-sub-list) [177 203]) ("ipstr" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [204 222]) ("port" variable (:constant-flag t :type "short int") (reparse-symbol arg-sub-list) [223 244])) :type "int") nil [161 655]) ("Bind" function (:arguments (("addr" variable (:type ("sockaddr_in" type (:prototype t :type "struct") nil nil)) (reparse-symbol arg-sub-list) [666 691]) ("sock_fd" variable (:type "int") (reparse-symbol arg-sub-list) [692 704]) ("ipstr" variable (:pointer 1 :constant-flag t :default-value "NULL," :type "char") (reparse-symbol arg-sub-list) [705 730]) ("port" variable (:constant-flag t :default-value "-1" :type "short int") (reparse-symbol arg-sub-list) [731 756])) :type "int") nil [657 946]) ("Listen" function (:arguments (("sock_fd" variable (:type "int") (reparse-symbol arg-sub-list) [959 972])) :type "int") nil [948 1050]) ("Connect" function (:arguments (("addr" variable (:type ("sockaddr_in" type (:prototype t :type "struct") nil nil)) (reparse-symbol arg-sub-list) [1064 1089]) ("sock_fd" variable (:type "int") (reparse-symbol arg-sub-list) [1090 1102]) ("ipstr" variable (:pointer 1 :constant-flag t :default-value "NULL," :type "char") (reparse-symbol arg-sub-list) [1103 1128]) ("port" variable (:constant-flag t :default-value "-1" :type "short int") (reparse-symbol arg-sub-list) [1129 1154])) :type "int") nil [1052 1347]))
+    :file "libsock.h"
+    :pointmax 1348
+    )
+   (semanticdb-table "CTable.h"
+    :major-mode 'c-mode
+    :tags '(("Table" type (:members (("public" label nil (reparse-symbol classsubparts) [17 24]) ("Table" function (:constructor-flag t :type ("Table" type (:type "class") nil nil)) (reparse-symbol classsubparts) [27 46]) ("Table" function (:destructor-flag t :type "void") (reparse-symbol classsubparts) [49 69])) :type "class") nil [2 74]))
+    :file "CTable.h"
+    :pointmax 75
+    )
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-gmake-mode
+    :tags '(("ser" function (:arguments ("main.cpp" "libsock.h" "CTable.h")) nil [1 58]))
+    :file "Makefile"
+    :pointmax 58
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre4"
+  :semanticdb-version "2.0pre4"
+  )
