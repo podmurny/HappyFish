@@ -1,6 +1,7 @@
 //Unix includs
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdlib.h>
 //My includs
 #include "libsock.h"
 #include "CTable.h"
@@ -8,27 +9,46 @@
 #include <iostream>
 #include <algorithm>
 #include <set>
+#include <string>
+#include <sstream>
 using namespace std;
 
 char buf[1024];
 int bytes_read;
 set<int> clients;
 
-void get_id_mes(char* id, char* mes, char* idmes)
+int from_str_to_int(string &str)
 {
+  int v;
+  stringstream in;
+  in << str;
+  in >> v;
+  return v;
+}
+
+int get_id_mes(int &a, char* mes, char* idmes)  //разделяем строку с получиным сообщением
+                                                  //на id и сообщение
+{
+  char *id;
   char *s = idmes;
   while(*s != '*')
     {
       if(*s == '\0')
-	return;
+	return -1;
       s++;
     }
   *s = '\0';
   id = idmes;
   s++;
   mes = s;
-  cout<<"We have "<<id<<"-------"<<mes<<endl;
+  string str(id);
+  a = from_str_to_int(str);
+  cout<<"AAAAAAAAAAAAAAAAAAAAAAAA: "<<a<<endl;
+  cout<<"We have "<<str<<" ------- "<<mes<<endl;
+  return a;//вот здесь проблемеeeeeeeeeeeeeeeeee
 }
+
+
 
 void action(int sockfd)
 {
@@ -43,14 +63,25 @@ void action(int sockfd)
   else
     {
       cout<<"Message from "<<sockfd<<" : "<<buf<<endl;
-      char* id;
+      int id;
       char* mes;
-      get_id_mes(id, mes, buf);
+      int sendfd = get_id_mes(id, mes, buf);
+      cout<<"Your socket id:"<<sendfd<<endl;
+      char sbuf[1024]; 
+      bzero(sbuf,sizeof(sbuf));
+      strcpy(sbuf,mes++);
+      //дальше мы должны что то  комуто отправлять
+      if(send(sendfd, sbuf, 1024, 0) < 0)
+	return;
     }
 }
 
 int main()
 {
+
+  const char *as = "5";
+  int a = atoi(as);
+  cout<<"Server strt ok "<<a<<endl;
   int lsock, sock;
   struct sockaddr_in addr;
   
@@ -61,7 +92,7 @@ int main()
   }
   fcntl(lsock, F_SETFL, O_NONBLOCK);
 
-  if(Bind(addr, lsock, "any", 4000) < 0){
+  if(Bind(addr, lsock, "any", 5000) < 0){
     perror("Bind");
     exit(1);
   }

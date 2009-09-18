@@ -13,60 +13,85 @@
 #include <sstream>
 using namespace std;
 
-char buf[1024];
-int bytes_read;
-set<int> clients;
+char buf[1024];//все клиенты использують общий буфер (экономим память:))
+int bytes_read;//необходимо занть сколько мы прочитали символов с потока
+set<int> clients;//множество клиентов
 
-int get_id_mes(char* id, char* mes, char* idmes)
+int from_str_to_int(string &str)//у меня не работал atoi хз почему...
+{                              //написал её аналог только работая со string, а не с char*
+  int v = 0;
+  stringstream in;
+  in << str;
+  in >> v;
+  return v;
+}
+/*Оптимизировать это гавно!!!*/
+int get_id_mes(char* idmes)  //разделяем строку с получиным сообщением
+                                                  //на id и сообщение
 {
   char *s = idmes;
+  
+  //разделяем строку на две части: id - строка кому отправлять
   while(*s != '*')
     {
       if(*s == '\0')
-	return -1;
+	return -1;//неправильный формат строки
       s++;
     }
   *s = '\0';
-  id = idmes;
-  s++;
-  mes = s;
-  string str(id);
+
+  string str(idmes);
+  /*
+    здесь у нас есть строка с именем пользователя, которому адрисовано сообщение
+    по этой строке надо найти индетификатор сокета, в который мы будем писать сообщение
+    !!!Но пока имя пользователя - это индетификатор сокета, определённый сервером!!!
+    современем я это доделаю)
+    Здесь так же можем использовать базу данных
+     */
+  int a = from_str_to_int(str);//в а сохраняем индитефикатор сокета
   
-  cout<<"We have "<<str<<" ------- "<<mes<<endl;
-  return atoi(str.data());
+  //заново склеиваем строку
+  s = idmes;
+  while(*s != '\0')
+    {
+      s++;
+    }
+  *s = '*';
+  //возвращаем индификатор сокета куда отправлять сообщение
+  return a;//
 }
 
-void action(int sockfd)
+int action(int sockfd)   //функция которая обрабатывает запрос клиента
+//может эту функцию стоит назвать routing?
 {
   bzero(buf,sizeof(buf));
   bytes_read = recv(sockfd, buf, 1024, 0);
+  //При закрытии соединения на сотороне клиента, сокет на стороне сервера будет активным
+  //Но мы несможем с него читать данные, таким образом мы можем провверять когда клиет отключится
   if(bytes_read <= 0)
     {
       // Соединение разорвано, удаляем сокет из множества
+      cout<<"Connection #"<<sockfd<<" close"<<endl;
       close(sockfd);
       clients.erase(sockfd);
     }
   else
     {
       cout<<"Message from "<<sockfd<<" : "<<buf<<endl;
-      char* id;
-      char* mes;
-      get_id_mes(id, mes, buf);
-      char a[3];
-      int i = 0;
-      int sendfd = get_id_mes(id, mes, buf);
+      int sendfd = get_id_mes(buf);//в соответствии с полученной строкой определить номер сокета куда будем дальше писать сообщение
+      if(sendfd < 0)
+	return -1;
       cout<<"Your socket id:"<<sendfd<<endl;
-      //if(send(sendfd, mes, strlen(mes), 0) < 0)
-      //return;
+      //дальше мы должны что то  комуто отправлять
+      if(send(sendfd, buf, 1024, 0) < 0)
+	return -1;
     }
+  return 0;
 }
 
 int main()
 {
 
-  const char *as = "5";
-  int a = atoi(as);
-  cout<<"Server strt ok "<<a<<endl;
   int lsock, sock;
   struct sockaddr_in addr;
   
@@ -77,7 +102,7 @@ int main()
   }
   fcntl(lsock, F_SETFL, O_NONBLOCK);
 
-  if(Bind(addr, lsock, "any", 4000) < 0){
+  if(Bind(addr, lsock, "any", 6000) < 0){
     perror("Bind");
     exit(1);
   }
@@ -88,6 +113,8 @@ int main()
   
   clients.clear();
   
+  cout<<"Server start: OK"<<endl;
+
   while(1)
     {
       fd_set readset;
@@ -125,7 +152,8 @@ int main()
       for(set<int>::iterator it = clients.begin(); it != clients.end(); it++)
         {
 	  if(FD_ISSET(*it, &readset))
-	    action(*it);
+	    if(action(*it) < 0)
+	      cout<<"invalid routing"<<endl;
 	}
     //end of while
     }
