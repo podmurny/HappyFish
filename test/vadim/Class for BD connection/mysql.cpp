@@ -1,3 +1,5 @@
+// 0.1 Версия кода
+// TODO: Откомментить все классы и функции, семантика, void -> int, use try catch, write manual=)
 #include <mysql++.h>
 #include <stdlib.h>
 
@@ -44,3 +46,7 @@ int logon_user(const char UID, const char password) {
 }
 
 };
+
+int main()
+{ return 0; }
+
