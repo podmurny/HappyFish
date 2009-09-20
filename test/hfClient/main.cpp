@@ -19,7 +19,7 @@ int main()
   d.mes = "FUCK YOU";
   str = d.Who+"_"+d.mes;
   cout<<str<<endl;
-  if(Connect(addr,sock,"any",6000) < 0)
+  if(Connect(addr,sock,"212.80.53.26",6000) < 0)
     perror("localhost");
   switch(fork())
     {
