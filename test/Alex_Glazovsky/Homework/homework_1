@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+double f()
+{ int x,y,z;
+double res;
+cin>>x;
+cin>>y;
+cin>>z;;
+res = x*x+10*y+z;
+cout<<res;
+return res;
+};
+int main()
+{
+  f();
+};
+
+//зделай программу 
+//3 входных параметра x y z
+//1 исходящий res
+//res = x * x + 10y + z
+//и вывести res на экран
+
