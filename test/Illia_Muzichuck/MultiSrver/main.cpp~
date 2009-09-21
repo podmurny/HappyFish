@@ -1,0 +1,148 @@
+//Unix includs
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
+//My includs
+#include "libsock.h"
+#include "CTable.h"
+//stl includs
+#include <iostream>
+#include <algorithm>
+#include <set>
+#include <string>
+#include <sstream>
+using namespace std;
+
+char buf[1024];
+int bytes_read;
+set<int> clients;
+
+int from_str_to_int(string &str)
+{
+  int v;
+  stringstream in;
+  in << str;
+  in >> v;
+  return v;
+}
+
+int get_id_mes(int &a, char* mes, char* idmes)  //разделяем строку с получиным сообщением
+                                                  //на id и сообщение
+{
+  char *id;
+  char *s = idmes;
+  while(*s != '*')
+    {
+      if(*s == '\0')
+	return -1;
+      s++;
+    }
+  *s = '\0';
+  id = idmes;
+  s++;
+  mes = s;
+  string str(id);
+  a = from_str_to_int(str);
+  cout<<"AAAAAAAAAAAAAAAAAAAAAAAA: "<<a<<endl;
+  cout<<"We have "<<str<<" ------- "<<mes<<endl;
+  return a;//вот здесь проблемеeeeeeeeeeeeeeeeee
+}
+
+
+
+void action(int sockfd)
+{
+  bzero(buf,sizeof(buf));
+  bytes_read = recv(sockfd, buf, 1024, 0);
+  if(bytes_read <= 0)
+    {
+      // Соединение разорвано, удаляем сокет из множества
+      close(sockfd);
+      clients.erase(sockfd);
+    }
+  else
+    {
+      cout<<"Message from "<<sockfd<<" : "<<buf<<endl;
+      int id;
+      char* mes;
+      int sendfd = get_id_mes(id, mes, buf);
+      cout<<"Your socket id:"<<sendfd<<endl;
+      char sbuf[1024]; 
+      bzero(sbuf,sizeof(sbuf));
+      strcpy(sbuf,mes++);
+      //дальше мы должны что то  комуто отправлять
+      if(send(sendfd, sbuf, 1024, 0) < 0)
+	return;
+    }
+}
+
+int main()
+{
+
+  const char *as = "5";
+  int a = atoi(as);
+  cout<<"Server strt ok "<<a<<endl;
+  int lsock, sock;
+  struct sockaddr_in addr;
+  
+  lsock = socket(AF_INET, SOCK_STREAM, 0);
+  if(lsock <= 0){
+    perror("Listen Socket");
+    exit(1);
+  }
+  fcntl(lsock, F_SETFL, O_NONBLOCK);
+
+  if(Bind(addr, lsock, "any", 5000) < 0){
+    perror("Bind");
+    exit(1);
+  }
+  if(Listen(lsock) < 0){
+    perror("Listen");
+    exit(1);
+  }
+  
+  clients.clear();
+  
+  while(1)
+    {
+      fd_set readset;
+      FD_ZERO(&readset);
+    
+      FD_SET(lsock, &readset);  
+      for(set<int>::iterator it = clients.begin(); it != clients.end(); it++)
+	FD_SET(*it, &readset);
+      
+      timeval timeout;
+      timeout.tv_sec = 15;
+      timeout.tv_usec = 0;
+      int mx = max(lsock, *max_element(clients.begin(), clients.end()));
+      
+      if(select(mx+1, &readset, NULL, NULL, &timeout) <= 0)
+	{
+	  continue;
+	}
+      
+      //Провкрка всех сокетов
+      if(FD_ISSET(lsock,&readset))
+	{
+	  // Поступил новый запрос на соединение, используем accept
+	  cout<<"New connection"<<endl;
+	  int sock = accept(lsock, NULL, NULL);
+	  if(sock < 0)
+	    {
+	      perror("accept");
+	      exit(3);
+	    }    
+	  cout<<"User number: "<<sock<<endl;
+	  fcntl(sock, F_SETFL, O_NONBLOCK);
+	  clients.insert(sock);
+	}
+      for(set<int>::iterator it = clients.begin(); it != clients.end(); it++)
+        {
+	  if(FD_ISSET(*it, &readset))
+	    action(*it);
+	}
+    //end of while
+    }
+  return 0;
+}
