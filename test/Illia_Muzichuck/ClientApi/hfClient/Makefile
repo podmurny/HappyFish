@@ -1,0 +1,11 @@
+client_objects = NetworkClient.o gsg_socket.o main.o
+
+client: $(client_objects)
+	g++ -o client $(client_objects)
+
+NetworkClient.o: NetworkClient.cpp
+gsg_socket.o: gsg_socket.cpp
+main.o: main.cpp
+
+clean:
+	rm -f *.o

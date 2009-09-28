@@ -1,0 +1,2 @@
+client: main.o NetworkClient.o
+	g++ -o client -g main.o NetworkClient.o
