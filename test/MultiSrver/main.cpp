@@ -5,6 +5,7 @@
 //My includs
 #include "libsock.h"
 #include "CTable.h"
+#include "../Podmurny_Vyacheslav/CClient/CClient.h"
 //stl includs
 #include <iostream>
 #include <algorithm>
@@ -24,6 +25,14 @@ int from_str_to_int(string &str)//у меня не работал atoi хз по
   in << str;
   in >> v;
   return v;
+}
+string from_int_to_string(int input)
+{
+	string result;
+	stringstream out;
+	out << input;
+	result = out.str();
+	return result;
 }
 /*Оптимизировать это гавно!!!*/
 int get_id_mes(char* idmes)  //разделяем строку с получиным сообщением
@@ -68,10 +77,16 @@ int action(int sockfd)   //функция которая обрабатывае�
   bytes_read = recv(sockfd, buf, 1024, 0);
   //При закрытии соединения на сотороне клиента, сокет на стороне сервера будет активным
   //Но мы несможем с него читать данные, таким образом мы можем провверять когда клиет отключится
+  CClient client;
   if(bytes_read <= 0)
+
     {
       // Соединение разорвано, удаляем сокет из множества
       cout<<"Connection #"<<sockfd<<" close"<<endl;
+	  string sockfd_to_string = from_int_to_string(sockfd);
+	  string message = "Connection #" + sockfd_to_string + " close";
+
+	  client.write_log_to_file(message);
       close(sockfd);
       clients.erase(sockfd);
     }
