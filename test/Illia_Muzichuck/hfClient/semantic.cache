@@ -4,9 +4,9 @@
   :tables (list 
    (semanticdb-table "main.cpp"
     :major-mode 'c++-mode
-    :tags '(("libsock.h" include nil nil [1 21]) ("iostream" include (:system-flag t) (dependency-file none) [22 41]) ("string" include (:system-flag t) (dependency-file none) [42 59]) ("Msg" type (:members (("Who" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [97 108]) ("mes" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [111 122])) :type "struct") nil [82 125]) ("main" function (:type "int") nil [127 903]))
+    :tags '(("libsock.h" include nil nil [1 21]) ("iostream" include (:system-flag t) (dependency-file none) [22 41]) ("string" include (:system-flag t) (dependency-file none) [42 59]) ("Msg" type (:members (("Who" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [97 108]) ("mes" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [111 122])) :type "struct") nil [82 125]) ("main" function (:type "int") nil [127 900]))
     :file "main.cpp"
-    :pointmax 904
+    :pointmax 901
     :unmatched-syntax 'nil
     )
    (semanticdb-table "libsock.h"
