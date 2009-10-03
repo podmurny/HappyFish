@@ -4,7 +4,7 @@
 int main()
 {
 
-        CClient client;
+        CClient client("/home/slava/log.txt");
 //	std::string st;
 //	st=client.get_date_time();
 //        std::string st("slava");
@@ -15,7 +15,7 @@ int main()
 		std::string st;
 		st = "slava log file";
         client.write_log_to_file(st);
-		printf("slava lox");
+		
 
         return 0;
     
