@@ -4,9 +4,15 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <string.h>
+#include <cstring>
 
 CClient::CClient()
 {
+}
+CClient::CClient(std::string path_of_file)
+{
+	path = path_of_file;
 }
 std::string CClient::get_date_time()
 {
@@ -27,7 +33,13 @@ int CClient::write_message_to_file(std::string& name1,std::string& message1)
 }
 int CClient::write_log_to_file(std::string& message1)
 {
-    std::ofstream log_file("logfile.txt", std::ios::app);
+    std::string st = path;
+    char *p;
+    
+    p = new char[path.length()];
+    strcpy(p,st.c_str());
+    std::ofstream log_file(p, std::ios::app);
+
     if(log_file.is_open())
     {
         std::string current_time = get_date_time();
