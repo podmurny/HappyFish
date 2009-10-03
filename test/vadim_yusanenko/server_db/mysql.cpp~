@@ -1,5 +1,5 @@
-// 0.3 Версия кода
-// TODO: Откомментить все классы и функции, семантика, void -> int, use try catch, write manual=)
+// 0.4.3 Версия кода
+// TODO: Откомментить все классы и функции, семантика, void -> int, use try catch, write manual
 #include <mysql++.h>
 #include <stdlib.h>
 
@@ -9,34 +9,41 @@ using namespace mysqlpp;
 class hfm_db {
 public:
 
-void add_user(const char UID, const char password) { 
-	Connection conn(false);
-	conn.connect("Test", "localhost", "root", "qwerty");
-	Query query = conn.query();
-	query << "INSERT INTO Accounts VALUES ('" << UID << "', '" << password << ");";
-	query.execute();
+Connection conn;
+unsigned int affected_rows;
+
+hfm_db(const char db[], const char db_host[], const char db_username[], const char db_password[]) {
+conn.connect(db, db_host, db_username, db_password);
 }
 
-void drop_user(const char UID) {
-	Connection conn(false);
-	conn.connect("Test", "localhost", "root", "qwerty");
+void add_user(const char UID[], const char password[]) { 
+	Query query = conn.query();
+	query << "INSERT INTO Accounts VALUES ('" << UID << "', '" << password << "');";
+	query.execute();
+	affected_rows = query.affected_rows();
+	cout << affected_rows;
+}
+
+void drop_user(const char UID[]) {
 	Query query = conn.query();
 	query << "DELETE FROM Accounts WHERE UID='" << UID << "');";
 	query.execute();
 }
 
-int logon_user(const char UID, const char password) {
-	Connection conn(false);
-	conn.connect("Test", "localhost", "root", "qwerty");
+int logon_user(const char UID[], const char password[]) {
 	Query query = conn.query();
 	query << "SELECT PASS FROM Accounts WHERE UID='" << UID << "');";
 	query.execute();
 	StoreQueryResult result = query.store();
-	if (!result[1]["PASS"] == password) return -1; else return 0;
+	if (result[0]["PASS"] != password) return -1; else return 0;
 }
 
 };
 
-int main()
-{ return 0; }
+int main() {
+hfm_db hfm_db1("Test", "localhost", "root", ".cfytyrjNHBCNFVdflbv");
+hfm_db1.add_user("vova", "qwerty");
+hfm_db1.add_user("lida", "qwerty");
+return 0; 
+}
 
