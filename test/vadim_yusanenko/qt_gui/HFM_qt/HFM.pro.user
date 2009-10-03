@@ -34,7 +34,7 @@
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString" >Debug</value>
    <value key="QtVersionId" type="int" >0</value>
    <value key="addQDumper" type="" ></value>
-   <value key="buildDirectory" type="QString" >/home/yusanenko/HFM</value>
+   <value key="buildDirectory" type="QString" >/home/yusanenko/git_work/HappyFish/test/vadim_yusanenko/qt_gui/HFM_qt</value>
   </valuemap>
  </data>
  <data>
@@ -56,7 +56,7 @@
   <valuemap type="QVariantMap" >
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString" >Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList" >
-    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-kkDR0rAPZG,guid=f875a0acd5dad2d16d4a5c664ac35033</value>
+    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-fbFH3gpunQ,guid=8ee11d9dff6a43d87efb045c4ac60da6</value>
     <value type="QString" >DESKTOP_SESSION=default</value>
     <value type="QString" >DESKTOP_STARTUP_ID=</value>
     <value type="QString" >DISPLAY=:0.0</value>
@@ -64,9 +64,9 @@
     <value type="QString" >GDM_LANG=en_US.UTF-8</value>
     <value type="QString" >GDM_XSERVER_LOCATION=local</value>
     <value type="QString" >GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString" >GNOME_KEYRING_PID=3409</value>
-    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-rQ0u7L/socket</value>
-    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-CNDKTs/S.gpg-agent:3575:1</value>
+    <value type="QString" >GNOME_KEYRING_PID=3687</value>
+    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-eQwRhN/socket</value>
+    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-BXAC7F/S.gpg-agent:3852:1</value>
     <value type="QString" >GTK_MODULES=canberra-gtk-module</value>
     <value type="QString" >GTK_RC_FILES=/etc/gtk/gtkrc:/home/yusanenko/.gtkrc-1.2-gnome2</value>
     <value type="QString" >HOME=/home/yusanenko</value>
@@ -76,19 +76,19 @@
     <value type="QString" >PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
     <value type="QString" >PWD=/home/yusanenko</value>
     <value type="QString" >QTDIR=/usr</value>
-    <value type="QString" >SESSION_MANAGER=local/Tristam:/tmp/.ICE-unix/3422</value>
+    <value type="QString" >SESSION_MANAGER=local/Tristam:/tmp/.ICE-unix/3700</value>
     <value type="QString" >SHELL=/bin/bash</value>
-    <value type="QString" >SSH_AGENT_PID=3551</value>
-    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-rQ0u7L/socket.ssh</value>
+    <value type="QString" >SSH_AGENT_PID=3829</value>
+    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-eQwRhN/socket.ssh</value>
     <value type="QString" >USER=yusanenko</value>
     <value type="QString" >USERNAME=yusanenko</value>
     <value type="QString" >WINDOWPATH=7</value>
     <value type="QString" >XAUTHORITY=/home/yusanenko/.Xauthority</value>
     <value type="QString" >XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
-    <value type="QString" >XDG_SESSION_COOKIE=03df3d04b69e44ba078d5f5a4a81a4bd-1254314034.697723-300848851</value>
+    <value type="QString" >XDG_SESSION_COOKIE=03df3d04b69e44ba078d5f5a4a81a4bd-1254493605.649669-1224057119</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList" >
-    <value type="QString" >/home/yusanenko/HFM/HFM.pro</value>
+    <value type="QString" >/home/yusanenko/git_work/HappyFish/test/vadim_yusanenko/qt_gui/HFM_qt/HFM.pro</value>
     <value type="QString" >-spec</value>
     <value type="QString" >/usr/share/qt4/mkspecs/linux-g++</value>
     <value type="QString" >-r</value>
@@ -96,8 +96,8 @@
     <value type="QString" >CONFIG+=debug</value>
    </valuelist>
    <value key="abstractProcess.command" type="QString" >/usr/bin/qmake-qt4</value>
-   <value key="abstractProcess.enabled" type="bool" >false</value>
-   <value key="abstractProcess.workingDirectory" type="QString" >/home/yusanenko/HFM</value>
+   <value key="abstractProcess.enabled" type="bool" >true</value>
+   <value key="abstractProcess.workingDirectory" type="QString" >/home/yusanenko/git_work/HappyFish/test/vadim_yusanenko/qt_gui/HFM_qt</value>
    <value key="buildConfiguration" type="int" >10</value>
   </valuemap>
  </data>
@@ -106,7 +106,7 @@
   <valuemap type="QVariantMap" >
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString" >Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList" >
-    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-kkDR0rAPZG,guid=f875a0acd5dad2d16d4a5c664ac35033</value>
+    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-fbFH3gpunQ,guid=8ee11d9dff6a43d87efb045c4ac60da6</value>
     <value type="QString" >DESKTOP_SESSION=default</value>
     <value type="QString" >DESKTOP_STARTUP_ID=</value>
     <value type="QString" >DISPLAY=:0.0</value>
@@ -114,9 +114,9 @@
     <value type="QString" >GDM_LANG=en_US.UTF-8</value>
     <value type="QString" >GDM_XSERVER_LOCATION=local</value>
     <value type="QString" >GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString" >GNOME_KEYRING_PID=3409</value>
-    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-rQ0u7L/socket</value>
-    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-CNDKTs/S.gpg-agent:3575:1</value>
+    <value type="QString" >GNOME_KEYRING_PID=3687</value>
+    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-eQwRhN/socket</value>
+    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-BXAC7F/S.gpg-agent:3852:1</value>
     <value type="QString" >GTK_MODULES=canberra-gtk-module</value>
     <value type="QString" >GTK_RC_FILES=/etc/gtk/gtkrc:/home/yusanenko/.gtkrc-1.2-gnome2</value>
     <value type="QString" >HOME=/home/yusanenko</value>
@@ -126,16 +126,16 @@
     <value type="QString" >PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
     <value type="QString" >PWD=/home/yusanenko</value>
     <value type="QString" >QTDIR=/usr</value>
-    <value type="QString" >SESSION_MANAGER=local/Tristam:/tmp/.ICE-unix/3422</value>
+    <value type="QString" >SESSION_MANAGER=local/Tristam:/tmp/.ICE-unix/3700</value>
     <value type="QString" >SHELL=/bin/bash</value>
-    <value type="QString" >SSH_AGENT_PID=3551</value>
-    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-rQ0u7L/socket.ssh</value>
+    <value type="QString" >SSH_AGENT_PID=3829</value>
+    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-eQwRhN/socket.ssh</value>
     <value type="QString" >USER=yusanenko</value>
     <value type="QString" >USERNAME=yusanenko</value>
     <value type="QString" >WINDOWPATH=7</value>
     <value type="QString" >XAUTHORITY=/home/yusanenko/.Xauthority</value>
     <value type="QString" >XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
-    <value type="QString" >XDG_SESSION_COOKIE=03df3d04b69e44ba078d5f5a4a81a4bd-1254314034.697723-300848851</value>
+    <value type="QString" >XDG_SESSION_COOKIE=03df3d04b69e44ba078d5f5a4a81a4bd-1254493605.649669-1224057119</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList" >
     <value type="QString" >debug</value>
@@ -143,7 +143,7 @@
    </valuelist>
    <value key="abstractProcess.command" type="QString" >/usr/bin/make</value>
    <value key="abstractProcess.enabled" type="bool" >true</value>
-   <value key="abstractProcess.workingDirectory" type="QString" >/home/yusanenko/HFM</value>
+   <value key="abstractProcess.workingDirectory" type="QString" >/home/yusanenko/git_work/HappyFish/test/vadim_yusanenko/qt_gui/HFM_qt</value>
    <valuelist key="makeargs" type="QVariantList" >
     <value type="QString" >debug</value>
    </valuelist>
@@ -159,6 +159,45 @@
   <variable>buildconfiguration-Debug-cleanstep1</variable>
   <valuemap type="QVariantMap" >
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString" >Debug</value>
+   <valuelist key="abstractProcess.Environment" type="QVariantList" >
+    <value type="QString" >DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-fbFH3gpunQ,guid=8ee11d9dff6a43d87efb045c4ac60da6</value>
+    <value type="QString" >DESKTOP_SESSION=default</value>
+    <value type="QString" >DESKTOP_STARTUP_ID=</value>
+    <value type="QString" >DISPLAY=:0.0</value>
+    <value type="QString" >GDMSESSION=default</value>
+    <value type="QString" >GDM_LANG=en_US.UTF-8</value>
+    <value type="QString" >GDM_XSERVER_LOCATION=local</value>
+    <value type="QString" >GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
+    <value type="QString" >GNOME_KEYRING_PID=3687</value>
+    <value type="QString" >GNOME_KEYRING_SOCKET=/tmp/keyring-eQwRhN/socket</value>
+    <value type="QString" >GPG_AGENT_INFO=/tmp/seahorse-BXAC7F/S.gpg-agent:3852:1</value>
+    <value type="QString" >GTK_MODULES=canberra-gtk-module</value>
+    <value type="QString" >GTK_RC_FILES=/etc/gtk/gtkrc:/home/yusanenko/.gtkrc-1.2-gnome2</value>
+    <value type="QString" >HOME=/home/yusanenko</value>
+    <value type="QString" >LANG=en_US.UTF-8</value>
+    <value type="QString" >LOGNAME=yusanenko</value>
+    <value type="QString" >ORBIT_SOCKETDIR=/tmp/orbit-yusanenko</value>
+    <value type="QString" >PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
+    <value type="QString" >PWD=/home/yusanenko</value>
+    <value type="QString" >QTDIR=/usr</value>
+    <value type="QString" >SESSION_MANAGER=local/Tristam:/tmp/.ICE-unix/3700</value>
+    <value type="QString" >SHELL=/bin/bash</value>
+    <value type="QString" >SSH_AGENT_PID=3829</value>
+    <value type="QString" >SSH_AUTH_SOCK=/tmp/keyring-eQwRhN/socket.ssh</value>
+    <value type="QString" >USER=yusanenko</value>
+    <value type="QString" >USERNAME=yusanenko</value>
+    <value type="QString" >WINDOWPATH=7</value>
+    <value type="QString" >XAUTHORITY=/home/yusanenko/.Xauthority</value>
+    <value type="QString" >XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/usr/share/gdm/</value>
+    <value type="QString" >XDG_SESSION_COOKIE=03df3d04b69e44ba078d5f5a4a81a4bd-1254493605.649669-1224057119</value>
+   </valuelist>
+   <valuelist key="abstractProcess.arguments" type="QVariantList" >
+    <value type="QString" >clean</value>
+    <value type="QString" >-w</value>
+   </valuelist>
+   <value key="abstractProcess.command" type="QString" >/usr/bin/make</value>
+   <value key="abstractProcess.enabled" type="bool" >true</value>
+   <value key="abstractProcess.workingDirectory" type="QString" >/home/yusanenko/git_work/HappyFish/test/vadim_yusanenko/qt_gui/HFM_qt</value>
   </valuemap>
  </data>
  <data>

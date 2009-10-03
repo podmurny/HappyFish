@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading ui file 'mainwindow.ui'
 **
-** Created: Wed Sep 30 16:27:37 2009
+** Created: Fri Oct 2 19:33:55 2009
 **      by: Qt User Interface Compiler version 4.5.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -51,6 +51,7 @@ public:
         if (MainWindowClass->objectName().isEmpty())
             MainWindowClass->setObjectName(QString::fromUtf8("MainWindowClass"));
         MainWindowClass->resize(250, 400);
+        MainWindowClass->setDockNestingEnabled(false);
         actionAccounts = new QAction(MainWindowClass);
         actionAccounts->setObjectName(QString::fromUtf8("actionAccounts"));
         actionOptions = new QAction(MainWindowClass);
