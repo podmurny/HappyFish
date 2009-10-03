@@ -1,0 +1,35 @@
+/*
+  Это первый класс, написаный ориентируясь на диаграмму классов,
+  созданную в начале лета. Ура товарищи!!!
+*/
+
+#ifndef network
+#define network
+#include "gsg_socket.h"
+#include <unistd.h>
+#include <string>
+
+#define CONNECT 1
+#define DISCONNECT 0
+
+//если кто то такой принцепиальный то может переименовать NetworkClient в CNetworkClient!!!
+class NetworkClient
+{
+ private:
+  int client_sock_fd;                                     //в этом класе скрыт сокет
+  sockaddr_in server_addr;                                //и структура адреса
+  int valid;                                              //состояния подключения(CONNECT или DISCONNECT)
+ private:
+  void SetValid(int v);                                   //пока эта функция не используентся
+ public:
+  NetworkClient();
+  ~NetworkClient();
+  void ConnectToServer(int port, const char* ipstr);      //соеденится с сервером
+  void Disconnect();                                      //это и так понятно)))
+  int LoginToServer(std::string pass, std::string login); //НЕ СТОИТ ИСПОЛЬЗОВАТЬ ЭТО если на сервере нет базы данных))))
+  int SendMsg(std::string msg);                           //отправить сообщение
+  int WaitMsg(std::string &str);                    //получить сообщение
+  int GetValid() const {return valid;}                    //узнать состояние подключения
+};
+
+#endif
