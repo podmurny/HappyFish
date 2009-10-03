@@ -1,0 +1,15 @@
+;; Object MultiSrver/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "MultiSrver/"
+  :tables (list 
+   (semanticdb-table "main.cpp"
+    :major-mode 'c++-mode
+    :tags '(("unistd.h" include (:system-flag t) nil [16 35]) ("fcntl.h" include (:system-flag t) nil [36 54]) ("stdlib.h" include (:system-flag t) nil [55 74]) ("libsock.h" include nil nil [88 108]) ("CTable.h" include nil nil [109 128]) ("iostream" include (:system-flag t) nil [143 162]) ("algorithm" include (:system-flag t) nil [163 183]) ("set" include (:system-flag t) nil [184 198]) ("string" include (:system-flag t) nil [199 216]) ("sstream" include (:system-flag t) nil [217 235]) ("buf" variable (:dereference 1 :type "char") nil [258 273]) ("bytes_read" variable (:type "int") nil [331 346]) ("clients" variable (:type ("set" type (:type "class") nil nil)) nil [404 421]) ("from_str_to_int" function (:arguments (("str" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [463 475])) :type "int") nil [443 672]) ("get_id_mes" function (:arguments (("idmes" variable (:pointer 1 :type "char") (reparse-symbol arg-sub-list) [720 732])) :type "int") nil [705 1658]) ("action" function (:arguments (("sockfd" variable (:type "int") (reparse-symbol arg-sub-list) [1671 1682])) :type "int") nil [1660 2627]) ("main" function (:type "int") nil [2629 4098]))
+    :file "main.cpp"
+    :pointmax 4099
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre4"
+  :semanticdb-version "2.0pre4"
+  )

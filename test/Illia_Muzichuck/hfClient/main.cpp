@@ -1,53 +1,52 @@
-#include "libsock.h"
+#include "NetworkClient.h"
 #include <iostream>
+#include <termios.h>	//To change terminal input mode
+#include <stdlib.h>
+#include <pthread.h>
 #include <string>
+#include "gsg_text_client.h"
 using namespace std;
 
-struct Msg
-{
-  string Who;
-  string mes;
-};
+NetworkClient client;
+pthread_mutex_t lockx;
+XYcords cords;
+WINDOW* bwin;
+WINDOW* swin;
+std::string temp;
 
-int main()
+int main(int argc, char *argv[])
 {
-  int sock = socket(AF_INET, SOCK_STREAM, 0);
-  struct sockaddr_in addr;
-  string str;
-  Msg d;
-  d.Who = "1";
-  d.mes = "FUCK YOU";
-  str = d.Who+"_"+d.mes;
-  cout<<str<<endl;
-  if(Connect(addr,sock,"localhost",6000) < 0)
-    perror("localhost");
-  switch(fork())
-    {
-    case (pid_t)-1:
-      perror("fork");
-      return 0;
-      break;
-    case (pid_t)0:
-      FOREVER
-	{
-	  string buf;
-	  cout<<"Enter msg: ";
-	  cin>>buf;
-	  send(sock,buf.data(), buf.length(), 0);
-	}
-      break;
-    default:
-      char buf[1024];
-      int bytes_read;
-      FOREVER
-	{
-	  bzero(buf,sizeof(buf));
-	  bytes_read = recv(sock, buf, 1024, 0);
-	  if(bytes_read >= 0)
-	    {
-	      cout<<endl<<"Message from server: "<<buf<<endl<<"Enter msg:";
-	    }
-	}
-    }
+  initscr();
+  InitTextClient(cords);
+  bwin = create_newwin_box(cords.ymax - 10, cords.xmax, 0, 0);
+  swin = create_newwin_box(10, cords.xmax, cords.ymax - 10, 0);
+
+  void* cl = (void*)&client;
+  
+  client.ConnectToServer(6002,"localhost");
+  if(client.GetValid() == DISCONNECT){
+    mvwprintw(bwin, 1, 1, "ERROR: Network not work");
+    wrefresh(bwin);}
+
+  if(pthread_mutex_init(&lockx, 0)){
+    mvwprintw(bwin, 1, 1, "ERROR: Mutex not work");
+    wrefresh(bwin);}
+  
+  if(StartNetworkListen(cl)){
+    mvwprintw(bwin, 1, 1, "ERROR: Thread not work");
+    wrefresh(bwin);}
+  
+  wmove(swin, 1, 1);
+  wrefresh(swin);
+  
+  StartNetworkSend(&client);
+  
+  if(pthread_mutex_destroy(&lockx)){
+    mvwprintw(bwin, 1, 1, "ERROR: Mutex not work");
+    wrefresh(bwin);}
+  
+  client.Disconnect();
+  
+  endwin();	/* End curses mode */
   return 0;
 }
