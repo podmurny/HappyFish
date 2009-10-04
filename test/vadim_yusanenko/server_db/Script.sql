@@ -24,13 +24,7 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 CREATE TABLE `Accounts` (
   `UID` char(20) character set utf8 NOT NULL,
-  `PASS` char(20) character set utf8 NOT NULL,
-  `Full_name` char(30) character set utf8 default NULL,
-  `Country` char(20) character set utf8 default NULL,
-  `City` char(20) character set utf8 default NULL,
-  `Language` char(20) character set utf8 default NULL,
-  `Birthday` char(20) character set utf8 default NULL,
-  `About` char(20) character set utf8 default NULL
+  `PASS` char(20) character set utf8 NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 SET character_set_client = @saved_cs_client;
 
