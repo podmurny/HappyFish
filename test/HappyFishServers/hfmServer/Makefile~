@@ -1,0 +1,8 @@
+client_objects = main.o SocketTable.o gsg_socket.o ServerCore.o
+server: $(client_objects)
+	g++ -o server $(client_objects) -lpthread
+
+main.o: main.cpp
+SocketTable.o: SocketTable.cpp
+gsg_socket.o: gsg_socket.cpp
+ServerCore.o: ServerCore.cpp

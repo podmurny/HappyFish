@@ -1,0 +1,10 @@
+#include "ServerCore.h"
+
+CServerCore serv;
+
+int main()
+{
+  serv.Init(6000);
+  serv.Start();
+  return 0;
+}

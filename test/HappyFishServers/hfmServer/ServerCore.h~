@@ -1,0 +1,37 @@
+#ifndef SERVERCORE
+#define SERVERCORE
+
+#include "gsg_socket.h"
+#include "SocketTable.h"
+#include "CDBClient.h"
+#include <unistd.h>
+#include <fcntl.h>
+
+#define CONNECT 1
+#define DISCONNECT 0
+
+class CServerCore
+{
+
+private:
+  int listenSocket;
+  sockaddr_in serverAddr;
+  int maxSocketNumber;
+  int valid;
+  CSocketTable userList;
+  int serverPort;
+  char buf[1024];                //все клиенты использують общий буфер (экономим память:))
+private:
+  int Routing(int sockNum);
+  void SetMaxSocketNumber(int &int_msn, int int_currentSocketNumber, bool bool_connect);
+  string Authorize(int sockNum, char* lbuf, int bytes_read);
+  int GetReceiverId(string message);
+public:
+  CServerCore();
+  ~CServerCore();
+  int Init(int port);
+  int Start();
+  
+};
+
+#endif
