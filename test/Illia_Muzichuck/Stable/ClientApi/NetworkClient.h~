@@ -1,6 +1,6 @@
 /*
   Это первый класс, написаный ориентируясь на диаграмму классов,
-  созданную в начале лета. Ура тАварищи!!!
+  созданную в начале лета. Ура товарищи!!!
 */
 
 #ifndef network
@@ -12,15 +12,15 @@
 #define CONNECT 1
 #define DISCONNECT 0
 
-//если кто-то такой принципиальный то может переименовать NetworkClient в CNetworkClient!!!
+//если кто то такой принцепиальный то может переименовать NetworkClient в CNetworkClient!!!
 class NetworkClient
 {
  private:
-  int client_sock_fd;                                     //в этом классе скрыт сокет
+  int client_sock_fd;                                     //в этом класе скрыт сокет
   sockaddr_in server_addr;                                //и структура адреса
   int valid;                                              //состояния подключения(CONNECT или DISCONNECT)
  private:
-  void SetValid(int v);                                   //пока эта функция не используется
+  void SetValid(int v);                                   //пока эта функция не используентся
  public:
   NetworkClient();
   ~NetworkClient();

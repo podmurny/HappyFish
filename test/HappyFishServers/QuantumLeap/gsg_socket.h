@@ -5,8 +5,10 @@ Bind - устанвливает для использования указаны
 Listen - делает из сокета слушающий соккет
 Connect - соеденяет указаный сокет с сокетом на сервере 
 */
-#ifndef Socket
-#define Socket
+#ifndef _GSG_SOCKET_
+
+#define _GSG_SOCKET_
+
 #include<sys/socket.h>
 #include<netinet/in.h>
 #include<arpa/inet.h>

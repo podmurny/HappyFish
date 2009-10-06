@@ -17,9 +17,9 @@ Connect - соеденяет указаный сокет с сокетом на 
 
 int create_addr(struct sockaddr_in&  addr, const char* ipstr, const short int port);
 /*WARNING:*/
-/*Функции Bind и Connect в качестве аргументов должны получить ссылку на структуру    sockaddr_in.
-  Эта структура может быть уже с указанным адресом и номером порта, ipstr и port указывать не надо.
-  Но если вы хотите создать новую структуру, то явно укажите эти аргументы.    По умолчанию   они 
+/*Функции Bind и Connect в качестве аргументов должны получит ссылку на структуру    sockaddr_in.
+  Эта структура может быть уже с указаным адресом и номером порта, ipstr и port указывать ненадо.
+  Но если вы хотите создать новую структуру, то явно укажите эти аргументы.    По умалчанию   они 
   указаны как NULL*/
 int Bind(struct sockaddr_in& addr, int sock_fd, const char* ipstr = NULL, const short int port = -1);
 int Connect(struct sockaddr_in& addr, int sock_fd, const char* ipstr = NULL, const short int port = -1);

@@ -1,0 +1,6 @@
+server_objects = main.o
+
+server: $(client_objects)
+	g++ -o server -g $(client_objects)
+
+main.o: main.cpp

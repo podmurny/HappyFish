@@ -1,7 +1,7 @@
 #include "NetworkClient.h"
 #include <stdlib.h>
 #include <iostream>
-//для того что б запустить этот пример, вначале запустите MultiServer!
+
 using namespace std; 
 int main()
 {

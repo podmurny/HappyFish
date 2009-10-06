@@ -151,7 +151,7 @@ int main()
 	}
       for(set<int>::iterator it = clients.begin(); it != clients.end(); it++)
         {
-	  if(FD_ISSET(*it, &readset))	//Если на порт данного сокета ктото ломится
+	  if(FD_ISSET(*it, &readset))
 	    if(action(*it) < 0)
 	      cout<<"invalid routing"<<endl;
 	}
