@@ -11,4 +11,4 @@ CREATE DATABASE Test;
 5. Выйдите из шела:
 quit
 6. Выполните скрипт, подтвердив его паролем
-mysql -u root -p Test < "~/путь к вашей папке с хепифиш/Vadim Yusanenko/Class for BD connection/Script.sql"
+mysql -u root -p Test < "~/путь к вашей папке с хепифиш/test/vadim_yusanenko/server_db/Script.sql"
