@@ -1,0 +1,21 @@
+;; Object KimoffThreadsServer/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "KimoffThreadsServer/"
+  :tables (list 
+   (semanticdb-table "server.cpp"
+    :major-mode 'c++-mode
+    :tags '(("sys/types.h" include (:system-flag t) (dependency-file "/usr/include/sys/types.h") [95 117]) ("sys/socket.h" include (:system-flag t) (dependency-file "/usr/include/sys/socket.h") [118 141]) ("netinet/in.h" include (:system-flag t) (dependency-file "/usr/include/netinet/in.h") [142 165]) ("sstream" include (:system-flag t) (dependency-file none) [166 184]) ("CLIENTS_QUEUE" variable (:constant-flag t :default-value "5" :type "int") nil [207 233]) ("ClientData" type (:members (("sock" variable (:type "int") (reparse-symbol classsubparts) [364 373]) ("buf" variable (:dereference 1 :type "char") (reparse-symbol classsubparts) [388 403]) ("bytes_read" variable (:type "int") (reparse-symbol classsubparts) [435 450]) ("thr" variable (:type ("pthread_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [484 498])) :type "struct") nil [301 513]) ("clients" variable (:dereference 1 :type ("ClientData" type (:type "class") nil nil)) nil [515 538]) ("from_str_to_int" function (:arguments (("str" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [608 620])) :type "int") nil [588 817]) ("get_id_mes" function (:arguments (("idmes" variable (:pointer 1 :type "char") (reparse-symbol arg-sub-list) [865 877])) :type "int") nil [850 1803]) ("process_client" function (:pointer 1 :arguments (("client_data" variable (:pointer 1 :type "void") (reparse-symbol arg-sub-list) [1826 1844])) :type "void") nil [1805 2812]) ("close" function (:prototype-flag t :arguments (("" variable (:type ("client" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2781 2788]) ("" variable (:type ("sock" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2788 2793])) :type "int") nil [2775 2794]) ("listener" variable (:type "int") nil [2829 2842]) ("addr" variable (:type ("sockaddr_in" type (:prototype t :type "struct") nil nil)) nil [2870 2894]) ("clients_quan" variable (:default-value "0" :type "int") nil [2932 2953]) ("thrID" variable (:type ("pthread_t" type (:type "class") nil nil)) nil [2984 3000]) ("listener" variable (:default-value "socket(AF_INET, SOCK_STREAM, 0)" :type "int") nil [3003 3046]) ("sin_family" variable (:default-value "AF_INET;" :type "int") nil [3123 3144]) ("sin_port" variable (:default-value "htons(6000)" :type "int") nil [3157 3180]) ("s_addr" variable (:default-value "htonl(INADDR_ANY)" :type "int") nil [3255 3282]) ("bind" function (:prototype-flag t :arguments (("" variable (:type ("listener" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3293 3302]) ("" variable (:type ("addr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3323 3328])) :type "int") nil [3288 3343]) ("listen" function (:prototype-flag t :arguments (("" variable (:type ("listener" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3393 3402]) ("" variable (:type ("CLIENTS_QUEUE" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3403 3417])) :type "int") nil [3386 3418]))
+    :file "server.cpp"
+    :pointmax 3843
+    )
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-gmake-mode
+    :tags '(("pser" function (:arguments ("server.cpp")) nil [1 54]))
+    :file "Makefile"
+    :pointmax 54
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre4"
+  :semanticdb-version "2.0pre4"
+  )

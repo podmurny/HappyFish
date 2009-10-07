@@ -1,0 +1,78 @@
+;; Object hfClient/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "hfClient/"
+  :tables (list 
+   (semanticdb-table "main.cpp"
+    :major-mode 'c++-mode
+    :tags '(("NetworkClient.h" include nil nil [1 27]) ("iostream" include (:system-flag t) (dependency-file none) [28 47]) ("termios.h" include (:system-flag t) (dependency-file "/usr/include/termios.h") [48 68]) ("stdlib.h" include (:system-flag t) (dependency-file "/usr/include/stdlib.h") [101 120]) ("pthread.h" include (:system-flag t) (dependency-file "/usr/include/pthread.h") [121 141]) ("string" include (:system-flag t) (dependency-file none) [142 159]) ("gsg_text_client.h" include nil nil [160 188]) ("client" variable (:type ("NetworkClient" type (:type "class") nil nil)) nil [211 232]) ("lockx" variable (:type ("pthread_mutex_t" type (:type "class") nil nil)) nil [233 255]) ("cords" variable (:type ("XYcords" type (:type "class") nil nil)) nil [256 270]) ("bwin" variable (:pointer 1 :type ("WINDOW" type (:type "class") nil nil)) nil [271 284]) ("swin" variable (:pointer 1 :type ("WINDOW" type (:type "class") nil nil)) nil [285 298]) ("temp" variable (:type ("std::string" type (:type "class") nil nil)) nil [299 316]) ("main" function (:arguments (("argc" variable (:type "int") (reparse-symbol arg-sub-list) [327 336]) ("argv" variable (:pointer 1 :dereference 1 :type "char") (reparse-symbol arg-sub-list) [337 350])) :type "int") nil [318 1190]))
+    :file "main.cpp"
+    :pointmax 1191
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "NetworkClient.h"
+    :major-mode 'c-mode
+    :tags '(("network" variable (:constant-flag t) nil [25 34]) ("gsg_socket.h" include nil nil [33 56]) ("unistd.h" include (:system-flag t) (dependency-file "/usr/include/unistd.h") [57 76]) ("string" include (:system-flag t) (dependency-file none) [77 94]) ("CONNECT" variable (:constant-flag t) nil [223 251]) ("DISCONNECT" variable (:constant-flag t) nil [241 260]) ("NetworkClient" type (:members (("private" label nil (reparse-symbol classsubparts) [278 286]) ("client_sock_fd" variable (:type "int") (reparse-symbol classsubparts) [289 308]) ("server_addr" variable (:type ("sockaddr_in" type (:type "class") nil nil)) (reparse-symbol classsubparts) [311 335]) ("valid" variable (:type "int") (reparse-symbol classsubparts) [338 348]) ("private" label nil (reparse-symbol classsubparts) [350 358]) ("SetValid" function (:prototype-flag t :arguments (("v" variable (:type "int") (reparse-symbol arg-sub-list) [375 381])) :type "void") (reparse-symbol classsubparts) [361 382]) ("public" label nil (reparse-symbol classsubparts) [384 391]) ("NetworkClient" function (:prototype-flag t :constructor-flag t :type ("NetworkClient" type (:type "class") nil nil)) (reparse-symbol classsubparts) [394 410]) ("NetworkClient" function (:prototype-flag t :destructor-flag t :type "void") (reparse-symbol classsubparts) [413 430]) ("ConnectToServer" function (:prototype-flag t :arguments (("port" variable (:type "int") (reparse-symbol arg-sub-list) [454 463]) ("ipstr" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [464 482])) :type "void") (reparse-symbol classsubparts) [433 483]) ("Disconnect" function (:prototype-flag t :type "void") (reparse-symbol classsubparts) [486 504]) ("LoginToServer" function (:prototype-flag t :arguments (("pass" variable (:pointer 1 :type "char") (reparse-symbol arg-sub-list) [525 536]) ("login" variable (:pointer 1 :type "char") (reparse-symbol arg-sub-list) [537 549])) :type "int") (reparse-symbol classsubparts) [507 550]) ("SendMsg" function (:prototype-flag t :arguments (("" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [565 580]) ("size" variable (:type "int") (reparse-symbol arg-sub-list) [580 581])) :type "int") (reparse-symbol classsubparts) [553 582]) ("WaitMsg" function (:prototype-flag t :arguments (("buffer" variable (:pointer 1 :type "char") (reparse-symbol arg-sub-list) [597 610]) ("size" variable (:type "int") (reparse-symbol arg-sub-list) [611 620])) :type "int") (reparse-symbol classsubparts) [585 621]) ("GetValid" function (:type "int") (reparse-symbol classsubparts) [624 660])) :type "class") nil [255 663]))
+    :file "NetworkClient.h"
+    :pointmax 672
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "NetworkClient.cpp"
+    :major-mode 'c++-mode
+    :tags '(("NetworkClient.h" include nil nil [1 27]) ("NetworkClient" function (:constructor-flag t :parent "NetworkClient" :type ("NetworkClient" type (:type "class") nil nil)) nil [29 146]) ("NetworkClient" function (:destructor-flag t :parent "NetworkClient" :type "void") nil [148 199]) ("SetValid" function (:parent "NetworkClient" :arguments (("v" variable (:type "int") (reparse-symbol arg-sub-list) [230 236])) :type "void") nil [201 253]) ("ConnectToServer" function (:parent "NetworkClient" :arguments (("port" variable (:type "int") (reparse-symbol arg-sub-list) [291 300]) ("ipstr" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [301 319])) :type "void") nil [255 510]) ("Disconnect" function (:parent "NetworkClient" :type "void") nil [512 640]) ("SendMsg" function (:parent "NetworkClient" :arguments (("msg" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [669 685])) :type "int") nil [642 875]) ("WaitMsg" function (:parent "NetworkClient" :arguments (("buffer" variable (:pointer 1 :type "char") (reparse-symbol arg-sub-list) [904 917]) ("size" variable (:type "int") (reparse-symbol arg-sub-list) [918 927])) :type "int") nil [877 1131]))
+    :file "NetworkClient.cpp"
+    :pointmax 1132
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "gsg_socket.h"
+    :major-mode 'c-mode
+    :tags '(("Socket" variable (:constant-flag t) nil [24 32]) ("NOT_ACTIV_CONN_COUNT" variable (:constant-flag t) nil [143 181]) ("FOREVER" variable (:constant-flag t) nil [174 194]) ("create_addr" function (:prototype-flag t :arguments (("addr" variable (:type ("sockaddr_in" type (:prototype t :type "struct") nil nil)) (reparse-symbol arg-sub-list) [207 233]) ("ipstr" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [234 252]) ("port" variable (:constant-flag t :type "short int") (reparse-symbol arg-sub-list) [253 274])) :type "int") nil [191 275]) ("Bind" function (:prototype-flag t :arguments (("addr" variable (:type ("sockaddr_in" type (:prototype t :type "struct") nil nil)) (reparse-symbol arg-sub-list) [285 310]) ("sock_fd" variable (:type "int") (reparse-symbol arg-sub-list) [311 323]) ("ipstr" variable (:pointer 1 :constant-flag t :default-value "NULL," :type "char") (reparse-symbol arg-sub-list) [324 349]) ("port" variable (:constant-flag t :default-value "-1" :type "short int") (reparse-symbol arg-sub-list) [350 375])) :type "int") nil [276 377]) ("Listen" function (:prototype-flag t :arguments (("sock_fd" variable (:type "int") (reparse-symbol arg-sub-list) [389 402])) :type "int") nil [378 403]) ("Connect" function (:prototype-flag t :arguments (("addr" variable (:type ("sockaddr_in" type (:prototype t :type "struct") nil nil)) (reparse-symbol arg-sub-list) [416 441]) ("sock_fd" variable (:type "int") (reparse-symbol arg-sub-list) [442 454]) ("ipstr" variable (:pointer 1 :constant-flag t :default-value "NULL," :type "char") (reparse-symbol arg-sub-list) [455 480]) ("port" variable (:constant-flag t :default-value "-1" :type "short int") (reparse-symbol arg-sub-list) [481 506])) :type "int") nil [404 508]))
+    :file "gsg_socket.h"
+    :pointmax 517
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "gsg_socket.cpp"
+    :major-mode 'c++-mode
+    :tags '(("gsg_socket.h" include nil nil [1 24]) ("create_addr" function (:arguments (("addr" variable (:type ("sockaddr_in" type (:prototype t :type "struct") nil nil)) (reparse-symbol arg-sub-list) [42 68]) ("ipstr" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [69 87]) ("port" variable (:constant-flag t :type "short int") (reparse-symbol arg-sub-list) [88 109])) :type "int") nil [26 497]) ("Bind" function (:arguments (("addr" variable (:type ("sockaddr_in" type (:prototype t :type "struct") nil nil)) (reparse-symbol arg-sub-list) [508 533]) ("sock_fd" variable (:type "int") (reparse-symbol arg-sub-list) [534 546]) ("ipstr" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [547 565]) ("port" variable (:constant-flag t :type "short int") (reparse-symbol arg-sub-list) [566 587])) :type "int") nil [499 776]) ("Listen" function (:arguments (("sock_fd" variable (:type "int") (reparse-symbol arg-sub-list) [789 802])) :type "int") nil [778 880]) ("Connect" function (:arguments (("addr" variable (:type ("sockaddr_in" type (:prototype t :type "struct") nil nil)) (reparse-symbol arg-sub-list) [894 919]) ("sock_fd" variable (:type "int") (reparse-symbol arg-sub-list) [920 932]) ("ipstr" variable (:pointer 1 :constant-flag t :type "char") (reparse-symbol arg-sub-list) [933 951]) ("port" variable (:constant-flag t :type "short int") (reparse-symbol arg-sub-list) [952 973])) :type "int") nil [882 1165]))
+    :file "gsg_socket.cpp"
+    :pointmax 1167
+    )
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-gmake-mode
+    :tags '(("client_objects" variable (:default-value ("NetworkClient.o" "gsg_socket.o" "main.o" "gsg_nscreen.o" "gsg_text_client.o")) nil [1 86]) ("client" function (:arguments ("$(client_objects)")) nil [87 170]) ("NetworkClient.o" function (:arguments ("NetworkClient.cpp")) nil [170 217]) ("gsg_socket.o" function (:arguments ("gsg_socket.cpp")) nil [205 240]) ("main.o" function (:arguments ("main.cpp")) nil [234 264]) ("gsg_text_client.o" function (:arguments ("gsg_text_client.cpp")) nil [282 322]) ("clean" function nil nil [322 339]))
+    :file "Makefile"
+    :pointmax 339
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "gsg_nscreen.h"
+    :major-mode 'c++-mode
+    :tags '(("NSCREEN" variable (:constant-flag t) nil [25 35]) ("ncurses.h" include (:system-flag t) (dependency-file "/usr/include/ncurses.h") [34 54]) ("create_newwin_box" function (:prototype-flag t :pointer 1 :arguments (("height" variable (:type "int") (reparse-symbol arg-sub-list) [82 93]) ("width" variable (:type "int") (reparse-symbol arg-sub-list) [94 104]) ("starty" variable (:type "int") (reparse-symbol arg-sub-list) [105 116]) ("startx" variable (:type "int") (reparse-symbol arg-sub-list) [117 128])) :type ("WINDOW" type (:type "class") nil nil)) nil [56 129]) ("DeleteChar" function (:prototype-flag t :arguments (("win" variable (:pointer 1 :type ("WINDOW" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [146 158])) :type "void") nil [130 159]))
+    :file "gsg_nscreen.h"
+    :pointmax 167
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "gsg_nscreen.cpp"
+    :major-mode 'c++-mode
+    :tags '(("gsg_nscreen.h" include nil nil [1 25]) ("create_newwin_box" function (:pointer 1 :arguments (("height" variable (:type "int") (reparse-symbol arg-sub-list) [53 64]) ("width" variable (:type "int") (reparse-symbol arg-sub-list) [65 75]) ("starty" variable (:type "int") (reparse-symbol arg-sub-list) [76 87]) ("startx" variable (:type "int") (reparse-symbol arg-sub-list) [88 99])) :type ("WINDOW" type (:type "class") nil nil)) nil [27 350]) ("DeleteChar" function (:arguments (("win" variable (:pointer 1 :type ("WINDOW" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [368 380])) :type "void") nil [352 505]))
+    :file "gsg_nscreen.cpp"
+    :pointmax 506
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "gsg_text_client.h"
+    :major-mode 'c-mode
+    :tags '(("TEXT_CLIENT" variable (:constant-flag t) nil [29 43]) ("gsg_nscreen.h" include nil nil [42 66]) ("pthread.h" include (:system-flag t) (dependency-file "/usr/include/pthread.h") [67 87]) ("string" include (:system-flag t) (dependency-file none) [88 105]) ("XYcords" type (:members (("xmax" variable (:type "int") (reparse-symbol classsubparts) [126 135]) ("ymax" variable (:type "int") (reparse-symbol classsubparts) [138 147])) :type "struct") nil [107 150]) ("bwin" variable (:pointer 1 :typemodifiers ("extern") :type ("WINDOW" type (:type "class") nil nil)) nil [152 172]) ("swin" variable (:pointer 1 :typemodifiers ("extern") :type ("WINDOW" type (:type "class") nil nil)) nil [173 193]) ("lockx" variable (:typemodifiers ("extern") :type ("pthread_mutex_t" type (:type "class") nil nil)) nil [194 223]) ("temp" variable (:typemodifiers ("extern") :type ("std::string" type (:type "class") nil nil)) nil [224 248]) ("InitTextClient" function (:prototype-flag t :arguments (("cords" variable (:type ("XYcords" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [270 285])) :type "void") nil [250 286]) ("GetUserString" function (:prototype-flag t :arguments (("str" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [306 323])) :type "void") nil [287 324]) ("StartNetworkListen" function (:prototype-flag t :arguments (("cl" variable (:pointer 1 :type "void") (reparse-symbol arg-sub-list) [348 357])) :type "int") nil [325 358]) ("StartNetworkSend" function (:prototype-flag t :arguments (("client" variable (:pointer 1 :type ("NetworkClient" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [381 403])) :type "void") nil [359 404]) ("NetworkListen" function (:prototype-flag t :pointer 1 :arguments (("client_void" variable (:pointer 1 :type "void") (reparse-symbol arg-sub-list) [425 443])) :type "void") nil [405 444]))
+    :file "gsg_text_client.h"
+    :pointmax 453
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "gsg_text_client.cpp"
+    :major-mode 'c++-mode
+    :tags '(("NetworkClient.h" include nil nil [1 27]) ("gsg_text_client.h" include nil nil [28 56]) ("stdlib.h" include (:system-flag t) (dependency-file "/usr/include/stdlib.h") [57 76]) ("unistd.h" include (:system-flag t) (dependency-file "/usr/include/unistd.h") [77 96]) ("InitTextClient" function (:arguments (("cords" variable (:type ("XYcords" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [118 133])) :type "void") nil [98 235]) ("NetworkListen" function (:pointer 1 :arguments (("client_void" variable (:pointer 1 :type "void") (reparse-symbol arg-sub-list) [257 275])) :type "void") nil [237 787]) ("StartNetworkListen" function (:arguments (("cl" variable (:pointer 1 :type "void") (reparse-symbol arg-sub-list) [812 821])) :type "int") nil [789 959]) ("GetUserString" function (:arguments (("str" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [980 997])) :type "void") nil [961 1728]) ("StartNetworkSend" function (:arguments (("client" variable (:pointer 1 :type ("NetworkClient" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1752 1774])) :type "void") nil [1730 1997]))
+    :file "gsg_text_client.cpp"
+    :pointmax 1998
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre4"
+  :semanticdb-version "2.0pre4"
+  )

@@ -19,7 +19,7 @@ int create_addr(struct sockaddr_in&  addr,    //ссылка на структу
       if(inet_aton(ipstr,&addr.sin_addr) == 0)
 	{
 	  bzero(&addr,0);
-	  return -1;                         //в случае неудачи создания адресса
+	  return -1;                         //в случаи неудачи создания адресса
 	}
   return sizeof(addr);
 }
