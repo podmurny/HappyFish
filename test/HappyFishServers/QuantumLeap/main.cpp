@@ -9,5 +9,6 @@ int main()
     if(server.Init(7777) == -1)
         exit(1);
     cout<<"SERVER START 0K"<<endl;
+    server.Start();
     return 0;
 }

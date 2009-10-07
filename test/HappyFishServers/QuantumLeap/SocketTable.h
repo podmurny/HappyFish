@@ -21,7 +21,7 @@ struct node
 };
 
 typedef node* ptr;
-
+//TODO: Оптимизировать это гавно!!!
 class CSocketTable
 {
 private:

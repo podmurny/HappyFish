@@ -10,6 +10,22 @@ CServerCore::~CServerCore()
 {
 }
 
+void CServerCore::AddEvent()
+{
+
+}
+
+bool CServerCore::BufferValid() //TODO: написать проверку структуры(буфера)
+{
+    return true;
+}
+
+void CServerCore::CloseConnection(int sockNum)
+{
+     userList.DeleteRecord(sockNum);
+     close(sockNum);
+}
+
 int CServerCore::Init(int port)
 {
     serverPort = port;
@@ -36,7 +52,6 @@ int CServerCore::Init(int port)
 
 int CServerCore::Start()
 {
-    CActionQueue queue;
     fd_set readset;
     ptr listIter;
     while(1)
@@ -50,40 +65,42 @@ int CServerCore::Start()
         timeval timeout;
         timeout.tv_sec = 0;
         timeout.tv_usec = 10;
-        if(select(maxSocketNumber + 1, &readset, NULL, NULL, &timeout) <= 0)
+        if(select(maxSocketNumber + 1, &readset, NULL, NULL, &timeout) > 0)
         {
-          //continue;
-        }
-        if(FD_ISSET(listenSocket,&readset))	//Если ктото ломится к листенеру
-        {
-          
-            cout<<"New connection"<<endl;
-            int sock = accept(listenSocket, NULL, NULL);
-            if(sock < 0)
+            if(FD_ISSET(listenSocket,&readset))	//Если ктото ломится к листенеру
             {
-                perror("accept");
+
+                cout<<"New connection"<<endl;
+                int sock = accept(listenSocket, NULL, NULL);
+                if(sock < 0)
+                {
+                    perror("accept");
+                }
+                maxSocketNumber = sock;
+                cout<<"User number: "<<sock<<endl;
+                fcntl(sock, F_SETFL, O_NONBLOCK);
+
+                userList.AddRecord("NONE", sock);
             }
-            cout<<"User number: "<<sock<<endl;
-            fcntl(sock, F_SETFL, O_NONBLOCK);
-            
-            userList.AddRecord("NONE", sock);
-        }
-        for(listIter = userList.GetHead(); listIter != NULL; listIter = listIter->next)
-        {
-	  if(FD_ISSET(listIter->item.sock_n, &readset))	//Если на порт данного сокета ктото ломится
-          {
-              if(recv(listIter->item.sock_n, buf, MAX_QUANTUM_SIZE, 0) <= 0)
+            for(listIter = userList.GetHead(); listIter != NULL; listIter = listIter->next)
+            {
+              if(FD_ISSET(listIter->item.sock_n, &readset))	//Если на порт данного сокета ктото ломится
               {
-                  userList.DeleteRecord(listIter->item.sock_n);
-                  close(listIter->item.sock_n);
+                  bzero(&quantumBuf, sizeof(Quantum));
+                  if(recv(listIter->item.sock_n, (void*)&quantumBuf, sizeof(Quantum), 0) <= 0)
+                      CloseConnection(listIter->item.sock_n);
+                  else
+                      if(!BufferValid())
+                          CloseConnection(listIter->item.sock_n);
+                      else
+                      {
+                          AddEvent();
+                      }
               }
-              else
-              {
-                  //Quantum event;
-                  //event.eventID = short(buf);
-              }
-          }
-	}
+            }
+        }//end of select
+
+
     }
     return 0;
 }
