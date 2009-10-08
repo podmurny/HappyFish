@@ -44,6 +44,6 @@ public
         }
         mainform = new MainForm();
         mainform.setVisible(true);
-        mainform.setEnabled(true);
+        
     }
 }

@@ -143,10 +143,9 @@ public class MainForm extends javax.swing.JFrame
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jMenu2MouseClicked
     {//GEN-HEADEREND:event_jMenu2MouseClicked
         login_window = new LoginWindow();
-        
         login_window.setVisible(true);
         this.setEnabled(false);
-        this.setEnabled(true);
+        
     }//GEN-LAST:event_jMenu2MouseClicked
 
     /**
@@ -160,6 +159,7 @@ public class MainForm extends javax.swing.JFrame
             public void run()
             {
                 new MainForm().setVisible(true);
+               
                 
             }
         });
