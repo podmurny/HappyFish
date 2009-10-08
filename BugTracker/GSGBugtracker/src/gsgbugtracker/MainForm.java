@@ -10,12 +10,16 @@
  */
 package gsgbugtracker;
 
+import java.awt.Dialog;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author slava
  */
 public class MainForm extends javax.swing.JFrame
 {
+    private LoginWindow login_window;
 
     /** Creates new form MainForm */
     public MainForm()
@@ -91,6 +95,11 @@ public class MainForm extends javax.swing.JFrame
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Login");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Add");
@@ -130,6 +139,15 @@ public class MainForm extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jMenu2MouseClicked
+    {//GEN-HEADEREND:event_jMenu2MouseClicked
+        login_window = new LoginWindow();
+        
+        login_window.setVisible(true);
+        this.setEnabled(false);
+        this.setEnabled(true);
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     /**
      * @param args the command line arguments
