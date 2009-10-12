@@ -12,6 +12,7 @@
 #include "gsg_socket.h"
 #include <fcntl.h>
 #include <iostream>
+#include <list>
 
 using namespace std;
 
@@ -40,6 +41,7 @@ private:
     CSocketTable userList;       //Список пользователей
     int serverPort;              //Порт который слушает сервер
     Quantum quantumBuf;          //все клиенты использують общий буфер (экономим память:))
+   
 private:
     bool BufferValid();
     void CloseConnection(int sockNum);
@@ -51,6 +53,8 @@ public:
     int Start();
     class CEventQueue;
     friend class CEventQueue;
+private:
+    list<CEventQueue*> QList;
 };
 
 class CServerCore::CEventQueue
@@ -76,9 +80,9 @@ private:
 private:
     int HandleText();
     void DeleteEvent();
+    void HandleEvent();
 public:
     void AddEvent(Quantum event);
-    void HandleEvent();
     bool IsEmpty();
     CEventQueue(CServerCore &serverLink);
     ~CEventQueue();

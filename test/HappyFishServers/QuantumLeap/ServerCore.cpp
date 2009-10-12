@@ -12,7 +12,9 @@ CServerCore::~CServerCore()
 
 void CServerCore::AddEvent()
 {
-
+    CEventQueue *ptrQ;
+    ptrQ = new CEventQueue(*this);
+    QList.push_back(ptrQ);
 }
 
 bool CServerCore::BufferValid() //TODO: написать проверку структуры(буфера)
@@ -52,6 +54,7 @@ int CServerCore::Init(int port)
 
 int CServerCore::Start()
 {
+    //
     fd_set readset;
     ptr listIter;
     while(1)
