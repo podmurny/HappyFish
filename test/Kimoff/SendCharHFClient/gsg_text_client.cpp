@@ -61,7 +61,11 @@ void GetUserString(std::string &str, NetworkClient* client)
     {
       	ch = getch();
       	if(ch == '\n')	//ENTER
+	{
+		str = "ENTER";		
+		client->SendMsg(str);	
 		break;				//Stop inputing string
+	}
      	if(ch == '\a')	//BACKSPACE
 	{
 		str = "BACKSPACE";		//Send BACKSPACE to receiver client
@@ -93,7 +97,7 @@ void StartNetworkSend(NetworkClient* client)
   std::string str;
   while(1)
     {
-      sleep(1);
+      //sleep(1);
       str = "";
       GetUserString(str, client);
       //client->SendMsg(str);

@@ -1,11 +1,6 @@
 #include "gsg_socket.h"
 
-//все функции возвращают 0 если выполнились без ошибки, и -1 если произошла ошибка
-//для того что б более подробно узнать какая произошла ошибка см. UNIX errno
-
-int create_addr(struct sockaddr_in&  addr,    //ссылка на структуру которую будем заполнять
-		const char* ipstr,            //строка с IP-адрессом в формате xxx.xxx.xxx.xxx
-		const short int port)         //номер порта
+int create_addr(struct sockaddr_in&  addr, const char* ipstr, const short int port)
 {
   bzero(&addr,0);
   addr.sin_family = AF_INET;
@@ -19,7 +14,7 @@ int create_addr(struct sockaddr_in&  addr,    //ссылка на структу
       if(inet_aton(ipstr,&addr.sin_addr) == 0)
 	{
 	  bzero(&addr,0);
-	  return -1;                         //в случае неудачи создания адресса
+	  return -1;
 	}
   return sizeof(addr);
 }

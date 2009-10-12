@@ -12,7 +12,7 @@ void InitTextClient(XYcords &cords)
   noecho();
 }
 
-void* NetworkListen(void* client_void)
+void* NetworkListen(void* client_void)		//Listening for receiving messages
 {
   NetworkClient* client = (NetworkClient*)client_void;
   if(client->GetValid() == DISCONNECT)
@@ -23,18 +23,23 @@ void* NetworkListen(void* client_void)
   xy.xmax = 1;
   xy.ymax = 1;
   while(1)
-    {
-      getyx(swin, prexy.ymax, prexy.xmax);
-      if(client->WaitMsg(buf, sizeof(buf))>0)
+  {
+	getyx(swin, prexy.ymax, prexy.xmax);
+	if(client->WaitMsg(buf, sizeof(buf))>0)
 	if(!pthread_mutex_lock(&lockx))
-	  {
-	    mvwprintw(bwin, xy.ymax, xy.xmax, buf);
-	    mvwprintw(swin, 1, 1, temp.data());
-	    wrefresh(bwin);
-	    wrefresh(swin);
-	    pthread_mutex_unlock(&lockx);
-	  }
-    }
+	{
+		if (buf == "BACKSPACE")		//Send BACKSPACE to receiver client
+		{
+			DeleteChar(bwin);		//Delete last symbol from the screen
+			wrefresh(bwin);
+		}
+		else mvwprintw(bwin, xy.ymax, xy.xmax, buf);
+		mvwprintw(swin, 1, 1, temp.data());
+		wrefresh(bwin);
+		wrefresh(swin);
+		pthread_mutex_unlock(&lockx);
+	}
+  }
 }
 
 int StartNetworkListen(void* cl)
@@ -45,7 +50,8 @@ int StartNetworkListen(void* cl)
   return 0;
 }
 
-void GetUserString(std::string &str)
+//////////////ОПТИМИЗИРОВАТЬ ЭТО ГАВНО!!!!!!!
+void GetUserString(std::string &str, NetworkClient* client)
 {
   keypad(stdscr, TRUE);
   str = "";
@@ -53,21 +59,33 @@ void GetUserString(std::string &str)
   char ch;
   while(1)
     {
-      ch = getch();
-      if(ch == '\n')
-	break;
-      if(ch == '\b')
+      	ch = getch();
+      	if(ch == '\n')	//ENTER
+		break;				//Stop inputing string
+     	if(ch == '\a')	//BACKSPACE
 	{
+		str = "BACKSPACE";		//Send BACKSPACE to receiver client
+		//client->SendMsg(str);
+		if(!pthread_mutex_lock(&lockx))
+	    	{
+	      		DeleteChar(swin);		//Delete last symbol from the screen
+	      		wrefresh(swin);
+	      		pthread_mutex_unlock(&lockx);
+	    	}
+
 	}
-      str += ch;
-      if(!pthread_mutex_lock(&lockx))
-	  {
-	    temp += ch;
-	    waddch(swin, ch);
-	    wrefresh(swin);
-	    pthread_mutex_unlock(&lockx);
-	  }
-    }
+      	else
+	{
+	  str = ch;				//Send entered symbol
+	  if(!pthread_mutex_lock(&lockx))
+	    {
+	      waddch(swin, ch);
+	      wrefresh(swin);
+	      pthread_mutex_unlock(&lockx);
+	    }//end of mutex
+	}//end of if
+	client->SendMsg(str);			//Send message (entered char or BACKSPACE command)
+    }//end of while
 }
 
 void StartNetworkSend(NetworkClient* client)
@@ -77,11 +95,11 @@ void StartNetworkSend(NetworkClient* client)
     {
       sleep(1);
       str = "";
-      GetUserString(str);
-      client->SendMsg(str);
-      wclear(swin);
-      box(swin, 0 , 0);
-      wmove(swin, 1, 1);
-      wrefresh(swin);
+      GetUserString(str, client);
+      //client->SendMsg(str);
+      wclear(swin);		//Clear the window
+      box(swin, 0 , 0);		//Draw РАМКУ around the window
+      wmove(swin, 1, 1);	//Cursor to start position
+      wrefresh(swin);		//Refresh the window on the screen
     }
 }

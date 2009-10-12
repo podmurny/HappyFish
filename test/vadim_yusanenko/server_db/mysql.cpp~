@@ -20,8 +20,7 @@ void add_user(const char UID[], const char password[]) {
 	Query query = conn.query();
 	query << "INSERT INTO Accounts VALUES ('" << UID << "', '" << password << "');";
 	query.execute();
-	affected_rows = query.affected_rows();
-	cout << affected_rows;
+	//affected_rows = query.affected_rows();
 }
 
 void drop_user(const char UID[]) {
