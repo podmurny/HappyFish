@@ -40,52 +40,21 @@ private:
     int valid;                   //Состояния сервера
     CSocketTable userList;       //Список пользователей
     int serverPort;              //Порт который слушает сервер
-    Quantum quantumBuf;          //все клиенты использують общий буфер (экономим память:))
-   
+    char serverBuf[sizeof(Quantum)];//все клиенты использують общий буфер (экономим память:))
+    fd_set readset;
+    timeval timeout;
 private:
     bool BufferValid();
     void CloseConnection(int sockNum);
+    void FillReadSet();
+    void NewConnection();
     void AddEvent();
+    bool FillServerBufFromSocket(int sock);
 public:
     CServerCore();
     ~CServerCore();
     int Init(int port);
     int Start();
-    class CEventQueue;
-    friend class CEventQueue;
-private:
-    list<CEventQueue*> QList;
-};
-
-class CServerCore::CEventQueue
-{
-private:
-    struct node
-    {
-        Quantum Item;
-        node* next;
-        node* prev;
-        node(Quantum data)
-        {
-            Item.eventID = data.eventID;
-            Item.size = data.size;
-            memcpy(Item.eventBuff,data.eventBuff,1024);
-            next=0;
-            prev=0;
-        }
-    };
-private:
-    node* current;
-    CServerCore &server;
-private:
-    int HandleText();
-    void DeleteEvent();
-    void HandleEvent();
-public:
-    void AddEvent(Quantum event);
-    bool IsEmpty();
-    CEventQueue(CServerCore &serverLink);
-    ~CEventQueue();
 };
 
 #endif	/* _SERVERCORE_H */
