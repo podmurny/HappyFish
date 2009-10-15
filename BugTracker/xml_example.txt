@@ -1,0 +1,10 @@
+<Projects>
+	<Project name="" info="">
+		<Tasks>
+			<Task name="" info="" status="">
+		</Tasks>
+		<Bugs>
+			<Bug name="" info="" status="">
+		</Bugs>
+	</Project>
+</Projects>
