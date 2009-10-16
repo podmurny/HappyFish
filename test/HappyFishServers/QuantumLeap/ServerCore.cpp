@@ -1,7 +1,7 @@
 #include "ServerCore.h"
 
 CServerCore::CServerCore() //исправить 100!!!
-    :listenSocket(-1), maxSocketNumber(100), valid(DISCONNECT), serverPort(0)
+    :listenSocket(-1), valid(DISCONNECT), serverPort(0)
 {
     bzero(&serverAddr,sizeof(serverAddr));
 }
@@ -10,7 +10,11 @@ CServerCore::~CServerCore()
 {
 }
 
-void CServerCore::AddEvent()
+void CServerCore::AddEvent(ClientInfo* clientPtr)
+{
+}
+
+void CServerCore::HandleCurrentEvent(ClientInfo* clientPtr)
 {
 }
 
@@ -23,11 +27,7 @@ void CServerCore::FillReadSet()
 {
     FD_ZERO(&readset);
     FD_SET(listenSocket, &readset);
-    ptr listIter;
-    for(listIter = userList.GetHead(); listIter != NULL; listIter = listIter->next)
-    {
-      FD_SET(listIter->item.sock_n, &readset);
-    }
+    userList.SocketsToSet(readset);
     timeout.tv_sec = 0;
     timeout.tv_usec = 10;
 }
@@ -40,7 +40,6 @@ void CServerCore::NewConnection()
     {
         perror("accept");
     }
-    //maxSocketNumber = sock; //!!! Исправить этот механизм !!!
     cout<<"User number: "<<sock<<endl;
     fcntl(sock, F_SETFL, O_NONBLOCK);
     userList.AddRecord("NONE", sock);
@@ -87,32 +86,33 @@ int CServerCore::Init(int port)
     {
       return -1;
     }
-    maxSocketNumber = listenSocket;
     valid = CONNECT;
     return 0;
 }
 
 int CServerCore::Start()
 {
-    ptr listIter;
+    CUsersTable::Iterator listIter(userList);
     while(1)
     {
         FillReadSet();
 
-        if(select(maxSocketNumber + 1, &readset, NULL, NULL, &timeout) > 0)
+        if(select(userList.GetMaxSockNum() + 1, &readset, NULL, NULL, &timeout) > 0)
         {
             if(FD_ISSET(listenSocket,&readset))	//Если ктото ломится к листенеру
                 NewConnection();
 
-            for(listIter = userList.GetHead(); listIter != NULL; listIter = listIter->next)
+            for(listIter.Begin(); !listIter.End(); listIter.Next())
             {
-                if(FD_ISSET(listIter->item.sock_n, &readset))	//Если на порт данного сокета ктото ломится
-                {
-                    if(!FillServerBufFromSocket(listIter->item.sock_n))
-                        CloseConnection(listIter->item.sock_n);
+
+                if(FD_ISSET(listIter.itemPtr->sock_n, &readset))	//Если на порт данного сокета ктото ломится
+                    if(!FillServerBufFromSocket(listIter.itemPtr->sock_n))
+                        CloseConnection(listIter.itemPtr->sock_n);
                     else
-                        AddEvent();
-                }
+                        AddEvent(listIter.itemPtr);
+
+                if(listIter.itemPtr->rqPtr != NULL) //есди у этого клиента есть какието события
+                    HandleCurrentEvent(listIter.itemPtr);
             }
 
         }//end of select
