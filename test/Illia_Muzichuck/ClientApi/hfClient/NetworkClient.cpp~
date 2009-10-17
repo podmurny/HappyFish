@@ -1,6 +1,0 @@
-
-#include "NetworkClient.h"
-
-NetworkClient::NetworkClient()
-{
-}
