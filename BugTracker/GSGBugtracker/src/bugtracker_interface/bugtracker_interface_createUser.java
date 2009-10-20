@@ -4,43 +4,22 @@
  */
 
 /*
- * bugtracker_interface_createProject.java
+ * bugtracker_interface_createUser.java
  *
- * Created on Oct 8, 2009, 12:24:32 AM
+ * Created on Oct 20, 2009, 6:50:23 PM
  */
 
 package bugtracker_interface;
 
 /**
  *
- * @author yusanenko
+ * @author slava
  */
-public class bugtracker_interface_createProject extends javax.swing.JFrame {
+public class bugtracker_interface_createUser extends javax.swing.JFrame {
 
-    /** Creates new form bugtracker_interface_createProject */
-    public bugtracker_interface_createProject(String type)
-    {
+    /** Creates new form bugtracker_interface_createUser */
+    public bugtracker_interface_createUser() {
         initComponents();
-        if (type == "Project")
-        {
-            this.jLabel1.setText("Project Name: ");
-            this.jLabel2.setText("Project information: ");
-        }
-        else if(type == "Task")
-        {
-            this.jLabel1.setText("Task Name: ");
-            this.jLabel2.setText("Task information: ");
-        }
-        else if(type == "Bug")
-        {
-            this.jLabel1.setText("Bug Name: ");
-            this.jLabel2.setText("Bug information: ");
-        }
-    }
-
-    private bugtracker_interface_createProject()
-    {
-        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     /** This method is called from within the constructor to
@@ -55,22 +34,23 @@ public class bugtracker_interface_createProject extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("User Login:");
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("User Password:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jLabel3.setText("User Role:");
 
-        jButton1.setText("ADD");
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tester", "Developer", "Lead Developer", "Project Manager" }));
+
+        jButton1.setText("Add");
 
         jButton2.setText("Cancel");
 
@@ -81,14 +61,17 @@ public class bugtracker_interface_createProject extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, 0, 161, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                    .addComponent(jLabel2))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -101,8 +84,12 @@ public class bugtracker_interface_createProject extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -118,7 +105,7 @@ public class bugtracker_interface_createProject extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new bugtracker_interface_createProject().setVisible(true);
+                new bugtracker_interface_createUser().setVisible(true);
             }
         });
     }
@@ -126,10 +113,11 @@ public class bugtracker_interface_createProject extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
