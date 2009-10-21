@@ -66,13 +66,17 @@ public class CBugTrack
     //types: "Project" , "Task" , "Bug"
     public int open_add_form(String type)
     {
+        String name,info;//Variables that we will write to database
         //TODO
         //here we must add open form event
+        //and fill our variables
         return 0;
     }
     //Open form that add user
     public int open_add_user()
     {
+        String login,password;//vaariables that 
+        int user_access_level;//we will write to database
         //TODO
         //Just open add user form and after click "Add" button
         //read and send data to database
@@ -108,6 +112,16 @@ public class CBugTrack
         {
             Logger.getLogger(CBugTrack.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return 0;
+    }
+    //get all information from xml
+    int get_xml()
+    {
+        return 0;
+    }
+    //set all information to xml
+    int set_xml()
+    {
         return 0;
     }
 }
