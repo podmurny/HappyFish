@@ -10,7 +10,7 @@ package com.toy.anagrams.lib;
  * @author Home
  */
 public class main {
-    public static String[][] ans;
+   
 
     public static void main(String[] args)
     throws javax.xml.parsers.ParserConfigurationException,
@@ -22,7 +22,6 @@ public class main {
         int bugs=4;
 
 
-      ans=new String[20][2];
       String[][] proj_info;
       proj_info= new String[6][2];
       proj_info[0][0]="knopochka1";

@@ -9,7 +9,7 @@ import javax.xml.transform.dom.*;
 
 public class CXML
  {
-
+  public static String[][] ans;
     public CXML()
     {
     }
@@ -72,7 +72,7 @@ public class CXML
 
 public void Read (String proj_name,String request)
 {
-   String[][] ans;
+  
   ans=new String[20][2];
   try {
   File file = new File("D:/output.xml");
@@ -102,9 +102,9 @@ public void Read (String proj_name,String request)
         {
          Element current_Task = (Element)Tasks.item(j);
          String status = current_Task.getAttribute("status");
-         main.ans[f][0]=status;
+         ans[f][0]=status;
          info = current_Task.getAttribute("info");
-         main.ans[f][1]=info;
+         ans[f][1]=info;
          f++;
         }
      }
@@ -117,9 +117,9 @@ public void Read (String proj_name,String request)
         {
          Element current_Bug = (Element)Bugs.item(l);
          String status = current_Bug.getAttribute("status");
-         main.ans[f][0]=status;
+         ans[f][0]=status;
          info = current_Bug.getAttribute("info");
-         main.ans[f][1]=info;
+         ans[f][1]=info;
          f++;
         }
      }
