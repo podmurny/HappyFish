@@ -10,7 +10,7 @@ import javax.xml.transform.dom.*;
 
 public class CXML
  {
-    public void Create(int m,String proj_info,int n,String task_info,int k,String bug_info)
+    public void Create(int m,String[] proj_info,int n,String task_info,int k,String bug_info)
       throws javax.xml.parsers.ParserConfigurationException,
              javax.xml.transform.TransformerException,
              javax.xml.transform.TransformerConfigurationException
@@ -29,7 +29,7 @@ public class CXML
         Element e2 = doc.createElement("Project");
         e1.appendChild(e2);
 
-        e2.setAttribute("name",proj_info);
+        e2.setAttribute("name","");
         e2.setAttribute("info","");
 
         Element e3 = doc.createElement("Tasks");
@@ -132,16 +132,16 @@ public void Read ()
              javax.xml.transform.TransformerConfigurationException,
              java.lang.ArrayIndexOutOfBoundsException
      {
-        int projects=3;
+        int projects=10;
         int tasks=2;
         int bugs=2;
         int m=2;
 
-      //String proj_info[];
-      //proj_info= new String[2];
-     // proj_info[0]="knopochka";
-      //proj_info[1]="knopochka blin";
-      String proj_info="";
+      String proj_info[];
+      proj_info= new String[2];
+      proj_info[0]="knopochka";
+      proj_info[1]="knopochka blin";
+     // String proj_info="";
       String task_info="vkladka";
       String bug_info="don`t work";
       new CXML().Create(projects,proj_info,tasks,task_info,bugs,bug_info);
